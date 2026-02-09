@@ -1,0 +1,7 @@
+streamlit
+PyPDF2
+nltk
+sentence-transformers
+faiss-cpu
+numpy
+networkx
