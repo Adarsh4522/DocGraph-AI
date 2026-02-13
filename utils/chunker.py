@@ -2,19 +2,27 @@ import nltk
 nltk.download("punkt", quiet=True)
 from nltk.tokenize import sent_tokenize
 
-def chunk_text(text, max_length=500):
-    sentences = sent_tokenize(text)
+def chunk_text(pages, max_length=500):
     chunks = []
-    current = ""
 
-    for sent in sentences:
-        if len(current) + len(sent) < max_length:
-            current += " " + sent
-        else:
-            chunks.append(current.strip())
-            current = sent
+    for page in pages:
+        sentences = sent_tokenize(page["text"])
+        current = ""
 
-    if current:
-        chunks.append(current.strip())
+        for sent in sentences:
+            if len(current) + len(sent) < max_length:
+                current += " " + sent
+            else:
+                chunks.append({
+                    "page": page["page"],
+                    "text": current.strip()
+                })
+                current = sent
+
+        if current:
+            chunks.append({
+                "page": page["page"],
+                "text": current.strip()
+            })
 
     return chunks
