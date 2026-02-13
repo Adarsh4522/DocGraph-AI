@@ -17,6 +17,10 @@ st.write("A Retrieval-Augmented Learning Assistant")
 
 uploaded_file = st.file_uploader("Upload PDF or TXT", type=["pdf", "txt"])
 
+if uploaded_file is None:
+    st.session_state.mcqs = []
+    st.session_state.chunks = []
+    st.session_state.vector_store = None
 store = None
 chunks = []
 
