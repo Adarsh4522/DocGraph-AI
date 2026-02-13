@@ -12,8 +12,86 @@ from utils.summarizer import summarize_text
 
 st.set_page_config(page_title="DocGraph AI")
 
-st.title("DocGraph AI")
-st.write("A Retrieval-Augmented Learning Assistant")
+st.markdown(
+    """
+    <h1 style='text-align: center;'>DocGraph AI</h1>
+    <h4 style='text-align: center; color: gray;'>
+    A Retreival-Augmented Learning Assistant</h4>
+
+    """,
+    unsafe_allow_html=True
+)
+st.write("")
+
+# ---------------- ANIMATED UI STYLE ---------------- #
+
+st.markdown("""
+<style>
+
+/* Smooth Fade In */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(15px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* Animated Gradient Background */
+.stApp {
+    background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1c1c1c);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Center Header Glow */
+h1 {
+    text-align: center;
+    animation: fadeIn 1.2s ease-in-out;
+    text-shadow: 0px 0px 15px rgba(0,255,255,0.5);
+}
+
+h4 {
+    text-align: center;
+    color: #cfcfcf;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Button Styling */
+div.stButton > button {
+    border-radius: 12px;
+    padding: 10px 20px;
+    transition: 0.3s;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+div.stButton > button:hover {
+    background-color: #00c6ff;
+    color: black;
+    transform: scale(1.05);
+}
+
+/* Upload box animation */
+section[data-testid="stFileUploader"] {
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Input box */
+input[type="text"] {
+    border-radius: 10px !important;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 0 10px #00c6ff;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
 
 uploaded_file = st.file_uploader("Upload PDF or TXT", type=["pdf", "txt"])
 
