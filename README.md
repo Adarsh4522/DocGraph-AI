@@ -1,5 +1,11 @@
 # 🚀 DocGraph AI  
 ### A Retrieval-Augmented Learning Assistant
+![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-red?style=for-the-badge&logo=streamlit)
+![NLP](https://img.shields.io/badge/NLP-Enabled-green?style=for-the-badge)
+![Transformers](https://img.shields.io/badge/Transformers-MiniLM-yellow?style=for-the-badge)
+![FAISS](https://img.shields.io/badge/FAISS-Vector_Search-orange?style=for-the-badge)
+![License](https://img.shields.io/badge/License-Academic-lightgrey?style=for-the-badge)
 
 DocGraph AI is an intelligent document analysis system that transforms static academic PDFs and TXT files into interactive AI-powered learning tools.
 
