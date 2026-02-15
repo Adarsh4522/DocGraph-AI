@@ -58,19 +58,19 @@ The objective of this project is to convert unstructured academic documents into
 The system follows a modular Retrieval-Augmented Generation (RAG) pipeline.
 
 User
-    ↓
+    ->
 Document Upload (PDF/TXT)
-    ↓
+    ->
 Text Extraction
-    ↓
+    ->
 Chunking
-    ↓
+    ->
 Embedding Generation (MiniLM - 384 Dimensional Vectors)
     ↓
 FAISS Vector Store
-    ↓
+    ->
 Semantic Retrieval
-    ↓
+    ->
 AI Output
       • Context-Aware Answers
       • MCQ Generation
@@ -133,7 +133,6 @@ This modular design ensures scalability and maintainability.
 
 ```bash
 git clone https://github.com/your-username/DocGraph-AI.git
-cd DocGraph-AI
 
 ```
 
