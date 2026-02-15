@@ -66,7 +66,7 @@ Text Extraction
 Chunking
     ->
 Embedding Generation (MiniLM - 384 Dimensional Vectors)
-    ↓
+    ->
 FAISS Vector Store
     ->
 Semantic Retrieval
