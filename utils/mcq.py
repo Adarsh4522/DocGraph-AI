@@ -1,12 +1,13 @@
 import random
 import re
 
-def generate_mcqs(chunks, num_questions=5):
+def generate_mcqs(chunks, num_questions=10):
     questions = []
 
     sentences = []
     for chunk in chunks:
-        sentences.extend(chunk.split("."))
+        sentences.extend(chunk["text"].split("."))
+
 
     # Clean and filter meaningful sentences
     sentences = [
