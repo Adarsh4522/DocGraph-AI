@@ -1,32 +1,34 @@
-from transformers import pipeline
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+import torch
 
-summarizer = pipeline(
-    "text2text-generation",
-    model="google/flan-t5-base"
-)
+model_name = "google/flan-t5-base"
+
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
 
 def summarize_text(text):
 
-    prompt = f"""
-    Provide a detailed academic summary of the following document.
-    Highlight key concepts, processes, and important conclusions.
+    if not text.strip():
+        return ""
 
-    Document:
-    {text}
+    input_text = "Summarize the following text:\n\n" + text
 
-    Academic Summary:
-    """
-
-    result = summarizer(
-        prompt,
-        max_length=300,
-        do_sample=False,
-        temperature=0.3
+    inputs = tokenizer(
+        input_text,
+        return_tensors="pt",
+        max_length=1024,
+        truncation=True
     )
 
-    summary = result[0]["generated_text"]
+    summary_ids = model.generate(
+        inputs["input_ids"],
+        max_length=200,
+        min_length=50,
+        length_penalty=2.0,
+        num_beams=4,
+        early_stopping=True
+    )
 
-    # Remove prompt from output
-    return summary.replace(prompt, "").strip()
+    summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
 
-
+    return summary

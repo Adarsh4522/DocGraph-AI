@@ -130,22 +130,20 @@ if query:
     query_lower = query.lower()
 
     # 🔹 Summarize
-   if "summarize" in query_lower or "summary" in query_lower:
+    if "summarize" in query_lower or "summary" in query_lower:
 
-    full_text = " ".join([c["text"] for c in chunks])
+        full_text = " ".join([c["text"] for c in chunks])
+        st.write("Text length:", len(full_text))  # Debug
+        summary = summarize_text(full_text)
 
-    st.write("Text length:", len(full_text))  # Debug
+        st.write("Raw summary output:", summary)  # Debug
 
-    summary = summarize_text(full_text)
+        st.subheader("Summary")
 
-    st.write("Raw summary output:", summary)  # Debug
-
-    st.subheader("Summary")
-
-    if summary:
-        st.write(summary)
-    else:
-        st.warning("Summary returned empty output.")
+        if summary:
+           st.write(summary)
+        else:
+           st.warning("Summary returned empty output.")
 
     # 🔹 MCQ
     elif "mcq" in query_lower:
